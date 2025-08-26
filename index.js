@@ -1,9 +1,12 @@
 const express = require('express');
-const URLroute = require('./routes/url');
 const { connectToMongoDB } = require('./connect');
 const URL = require("./models/url");
 const path = require('path');
+
+
+const URLroute = require('./routes/url');
 const staticRoute = require("./routes/staticRouter");
+const userRoute = require("./routes/user")
 
 const app = express();
 const PORT = 8001;
@@ -23,6 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use('/url', URLroute);
+app.use('/user', userRoute);
 app.use('/', staticRoute);
 
 // Handle short URL redirection
