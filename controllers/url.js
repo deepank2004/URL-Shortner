@@ -10,6 +10,7 @@ async function generateNewShortURL(req, res) {
         shortId: shortId,
         redirectURL: body.url,
         visitHistory: [],
+        createdBy : req.user._id,
     });
 
     const allurls = await URL.find({});
